@@ -1,0 +1,34 @@
+baseurl = "https://designing.systems/"
+title = "designing.systems"
+theme = "ghostwriter"
+languageCode = "en-us"
+copyright = "Hemanth Malla"
+disqusShortname = "designing-systems"
+googleAnalytics = "UA-104765681-3"
+enableEmoji = true
+
+[Author]
+    name = "Hemanth Malla"
+
+[Taxonomies]
+    tag = "tags"
+
+[Params]
+    headline = "Designing Systems"
+    description = "About interesting systems that scale and self-heal"
+    intro = true
+    opengraph = true
+    shareTwitter = true
+    shareFacebook = true
+    shareGooglePlus = true
+    shareLinkedIn = true
+    dateFormat = "Mon, Jan 2, 2006"
+    highlightJsUrl = ""
+    highlightJsLocalUrl = ""
+    github = "https://github.com/hemanthmalla"
+    linkedin = "https://linkedin.com/in/hemanthmalla/"
+    twitter = "https://twitter.com/hemanthmalla"
+    homepage = "https://hemanth.io"
+
+[Permalinks]
+    post = "/:year/:month/:day/:filename/"

@@ -1,0 +1,7 @@
+public
+# os
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+themes/ghostwriter/node_modules/
