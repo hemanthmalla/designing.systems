@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on designing.systems</title>
+    <link>https://designing.systems/post/</link>
+    <description>Recent content in Posts on designing.systems</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Hemanth Malla</copyright>
+    <lastBuildDate>Mon, 15 Jan 2018 21:30:22 +0530</lastBuildDate>
+    
+	<atom:link href="https://designing.systems/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Why designing.systems ?</title>
+      <link>https://designing.systems/2018/01/15/why_designing_systems/</link>
+      <pubDate>Mon, 15 Jan 2018 21:30:22 +0530</pubDate>
+      
+      <guid>https://designing.systems/2018/01/15/why_designing_systems/</guid>
+      <description>.twitter-tweet-rendered { display:block; margin-left:auto; margin-right:auto; }  Most software generally comprises of multiple components that work together to form a powerful system. Each Component is designed to do one thing very well. Like an orchestra, it is very gratifying to see the execution and capabilities of well engineered systems. As the saying goes..
+ Any sufficiently advanced technology is indistinguishable from magic - Arthur C. Clarke
+ I throughly enjoy building smart and scalable systems.</description>
+    </item>
+    
+  </channel>
+</rss>

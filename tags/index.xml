@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on designing.systems</title>
+    <link>https://designing.systems/tags/</link>
+    <description>Recent content in Tags on designing.systems</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Hemanth Malla</copyright>
+    <lastBuildDate>Mon, 15 Jan 2018 21:30:22 +0530</lastBuildDate>
+    
+	<atom:link href="https://designing.systems/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>General</title>
+      <link>https://designing.systems/tags/general/</link>
+      <pubDate>Mon, 15 Jan 2018 21:30:22 +0530</pubDate>
+      
+      <guid>https://designing.systems/tags/general/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Intro</title>
+      <link>https://designing.systems/tags/intro/</link>
+      <pubDate>Mon, 15 Jan 2018 21:30:22 +0530</pubDate>
+      
+      <guid>https://designing.systems/tags/intro/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
