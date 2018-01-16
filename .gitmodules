@@ -1,3 +1,3 @@
 [submodule "themes/ghostwriter"]
 	path = themes/ghostwriter
-	url = https://github.com/jbub/ghostwriter.git
+	url = git@github.com:hemanthmalla/ghostwriter.git

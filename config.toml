@@ -15,7 +15,7 @@ enableEmoji = true
 
 [Params]
     headline = "Designing Systems"
-    description = "About interesting systems that scale and self-heal"
+    description = "~ Scalable, Modualr and self-healing ~"
     intro = true
     opengraph = true
     shareTwitter = true
