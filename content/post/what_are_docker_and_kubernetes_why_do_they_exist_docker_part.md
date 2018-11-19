@@ -7,6 +7,8 @@ tags:
   - Containers
   - Kubernetes
   - Distributed Systems
+images:
+  - /images/joey_docker.jpg
 ---
 
 <style>
