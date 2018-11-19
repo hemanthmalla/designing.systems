@@ -9,6 +9,7 @@ tags:
   - Distributed Systems
 images:
   - /images/joey_docker.jpg
+enableDisqus: true
 ---
 
 <style>
