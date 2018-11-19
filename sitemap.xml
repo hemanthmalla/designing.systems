@@ -3,8 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://designing.systems/2018/11/18/what_are_docker_and_kubernetes_why_do_they_exist_docker_part/</loc>
+    <lastmod>2018-11-18T15:45:00-08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://designing.systems/2018/01/15/why_designing_systems/</loc>
     <lastmod>2018-01-15T21:30:22+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://designing.systems/tags/containers/</loc>
+    <lastmod>2018-11-18T15:45:00-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://designing.systems/tags/distributed-systems/</loc>
+    <lastmod>2018-11-18T15:45:00-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://designing.systems/tags/docker/</loc>
+    <lastmod>2018-11-18T15:45:00-08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -20,20 +43,26 @@
   </url>
   
   <url>
+    <loc>https://designing.systems/tags/kubernetes/</loc>
+    <lastmod>2018-11-18T15:45:00-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://designing.systems/post/</loc>
-    <lastmod>2018-01-15T21:30:22+05:30</lastmod>
+    <lastmod>2018-11-18T15:45:00-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://designing.systems/tags/</loc>
-    <lastmod>2018-01-15T21:30:22+05:30</lastmod>
+    <lastmod>2018-11-18T15:45:00-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://designing.systems/</loc>
-    <lastmod>2018-01-15T21:30:22+05:30</lastmod>
+    <lastmod>2018-11-18T15:45:00-08:00</lastmod>
     <priority>0</priority>
   </url>
   

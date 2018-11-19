@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Hemanth Malla</copyright>
-    <lastBuildDate>Mon, 15 Jan 2018 21:30:22 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 18 Nov 2018 15:45:00 -0800</lastBuildDate>
     
 	<atom:link href="https://designing.systems/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What are Docker &amp; Kubernetes ? Why do they exist ?</title>
+      <link>https://designing.systems/2018/11/18/what_are_docker_and_kubernetes_why_do_they_exist_docker_part/</link>
+      <pubDate>Sun, 18 Nov 2018 15:45:00 -0800</pubDate>
+      
+      <guid>https://designing.systems/2018/11/18/what_are_docker_and_kubernetes_why_do_they_exist_docker_part/</guid>
+      <description>figcaption { margin-left:30%; } .layers { margin-left:20%; }    Applications deployed on production are expected to possess the following properties :
+ Consistency / Reproducibility: Code deployed in a specific environment with a set of dependencies should always result in a deterministic output. Isolation: Applications should always be guaranteed of the resources it needs. We don’t want a noisy neighbour eating into our application&amp;rsquo;s resources. Transparency: There should be provisions in the system to track who’s doing what easily.</description>
+    </item>
     
     <item>
       <title>Why designing.systems ?</title>

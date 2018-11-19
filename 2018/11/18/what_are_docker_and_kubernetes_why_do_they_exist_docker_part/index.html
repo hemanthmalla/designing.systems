@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>What are Docker &amp; Kubernetes ? Why do they exist ? &middot; Hemanth Malla</title>
+        <meta name="description" content="The Docker part !">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.51" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="What are Docker &amp; Kubernetes ? Why do they exist ?">
+<meta property="og:description" content="The Docker part !">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://designing.systems/2018/11/18/what_are_docker_and_kubernetes_why_do_they_exist_docker_part/">
+        <link rel="stylesheet" href="https://designing.systems/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        
+    </head>
+    <body>
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-104765681-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="designing.systems" href="https://designing.systems/">designing.systems</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://designing.systems/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/hemanthmalla">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/hemanthmalla">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/hemanthmalla/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                        <a class="button-square button-social hint--top" data-hint="Homepage" title="Author's Home" href="https://hemanth.io">
+                            <i class="fa fa-home"></i>
+                        </a>
+                    
+                    </div>
+
+                    <ul class="site-nav">
+                        
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">What are Docker &amp; Kubernetes ? Why do they exist ?</h1>
+    
+        <p class="post-description" itemprop="description">The Docker part !</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-11-18" itemprop="datePublished">Sun, Nov 18, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Hemanth Malla</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <style>
+figcaption {
+    margin-left:30%;
+}
+.layers {
+    margin-left:20%;
+}
+</style>
+
+<figure>
+    <img src="/images/joey_docker.jpg"/> 
+</figure>
+
+
+<p>Applications deployed on production are expected to possess the following properties :</p>
+
+<ul>
+<li><strong>Consistency / Reproducibility</strong>: Code deployed in a specific environment with a set of dependencies should always result in a deterministic output.</li>
+<li><strong>Isolation</strong>: Applications should always be guaranteed of the resources it needs. We don’t want a noisy neighbour eating into our application&rsquo;s resources.</li>
+<li><strong>Transparency</strong>: There should be provisions in the system to track who’s doing what easily.</li>
+</ul>
+
+<p>People have been relying on <a href="https://en.wikipedia.org/wiki/Virtual_machine">virtual machines</a> to achieve some of the above-mentioned goals for a long time now. Some of you would be aware of virtual machines as a way to run a brand new operating system, either to use an application designed to run only on a specific operating system or as an easy way to get a machine that can be blown up in the testing process.</p>
+
+<p>It turns out that many enterprises use the same technology to run their software on production.  With virtual machines (VMs) you are essentially running an entire operating system on top of another. That’s a lot of additional overhead. People were still using them because VMs have good provisions to achieve isolation. Since the entire OS and application’s dependencies are packaged as a VM image, deployments are reproducible. It’s okay if we are deploying a few monolithic apps, but this OS overhead quickly escalates while running hundreds of micro-services.</p>
+
+<figure>
+    <img src="/images/docker_vs_vm.png"/> <figcaption>
+            <h4>Containers vs Virtual Machines</h4>
+        </figcaption>
+</figure>
+
+
+<p>People started wondering if it was possible to achieve the same levels of isolation and reproducibility without having the overhead of running an entire operating system. Linux kernel has these constructs called <a href="https://en.wikipedia.org/wiki/Linux_namespaces">namespaces</a> and control groups (<a href="https://en.wikipedia.org/wiki/Cgroups">cgroups</a>) which allow us to do just that. cgroups help us meter,  limit and account for Linux resources like memory, CPU, Block IO, Network and devices. Namespaces enable us to partition and sandbox the same resources, controlling the visibility of a system resource to the processes.</p>
+
+<p>Combination of these primitives would allow a process to run in a virtually sandboxed way, allowing us to achieve similar levels of isolation possible with VMs.  Docker is a handy tool that implements these primitives. A process running with all these primitives applied is called a container. Multiple containers running on the same machine would share the OS kernel. But, how safe is it to run my process next to an unknown process on the same host machine? What if one of the processes issues a <a href="https://en.wikipedia.org/wiki/System_call">syscall</a> that changes the state of the underlying host? Docker has checks in place to prevent co-located containers from affecting each other. Docker does this by blocking access to around 44 system calls with a <a href="https://en.wikipedia.org/wiki/Seccomp">seccomp</a> profile. List of significant syscalls blocked can be found <a href="https://github.com/docker/docker.github.io/blob/master/engine/security/seccomp.md#significant-syscalls-blocked-by-the-default-profile">here</a>. The default seccomp profile can be found <a href="https://github.com/moby/moby/blob/master/profiles/seccomp/default.json">here</a>.</p>
+
+<figure class="layers">
+    <img src="/images/container-layers.jpg"/> 
+</figure>
+
+
+<p>Okay, so cgroups and namespaces help sandbox processes, but what about the filesystem? Docker gives every container a dedicated virtual filesystem. Docker takes a layered approach to filesystems, very similar to how git stores files. Application code packaged along with the entire root file system needed to run the application is called a docker image. Note that, we&rsquo;re packaging the file system but not running a new OS. These files are packaged so that the user-space programs needed by your application are standardized. No matter where your application runs, it would depend on the same set of libraries. A docker image is a reference to several layers stacked on top of one another. Each layer is only a set of differences from the layer before it. When a container is created from a docker image, the storage driver is responsible for combining all the layers into the root filesystem. The files in these layers are read-only. The storage driver also adds a thin writable layer. All the local changes made by the running process are written to this layer.</p>
+
+<p>The first time a change needs to be written to files from the read-only layer, they are copied over to the writeable layer. This strategy is called copy-on-write (<a href="https://en.wikipedia.org/wiki/Copy-on-write">CoW</a>). CoW incurs a significant performance overhead; hence it is advisable to direct write-heavy operations to a separate volume. Multiple volumes can be mounted onto a single container, which would allow writes at native host machine speeds. Because the layers comprising of a docker image are read-only, several container instances of a  docker image share the underlying layer files on the host machine. Thereby, reducing the disk space occupied by the containers. Different docker images can also share the underlying layers. Docker has a pluggable architecture for storage drivers. Some of the drivers are AUFS, Btrfs, devicemapper, OverlayFS, ZFS and VFS. Each driver has its own merits and demerits. Some advice on selecting an appropriate storage driver can be found <a href="https://docs.docker.com/v17.09/engine/userguide/storagedriver/selectadriver/">here</a>.</p>
+
+<figure>
+    <img src="/images/docker_engine_architecture.svg"/> <figcaption>
+            <h4>Docker Engine Architecture</h4>
+        </figcaption>
+</figure>
+
+
+<p>At a high-level docker contains three components. The CLI, docker daemon and docker registry. Docker daemon is the process that runs on every host machine and is responsible for running processes within containers. CLI can be used to issue commands to the docker daemon. Finally, the registry allows users to collaborate and share docker images. Docker images are written as Dockerfiles, which specify exactly how a docker image should be built. The <a href="https://hub.docker.com">community</a> continues to do a great job of curating high-quality docker images for most popular software. This makes testing out that shiny new database, a single command (<em>docker run</em> ✨🌟⚡) away.</p>
+
+<p>So, we’ve seen how docker makes it easy to leverage Linux primitives to achieve isolation with minimal resource overhead. As we start to containerize more and more applications, we need to deal with new complexities. How do we manage and supervise the health and performance of running containers? How do we take container scheduling decisions at scale? This is where Kubernetes comes in, and this will be our topic of discussion in the next blog post.</p>
+
+<p><em>Credits : Most of the arch. diagrams have been taken from the official docker documentation.</em></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/docker/">Docker</a>, 
+            
+                <a href="/tags/containers/">Containers</a>, 
+            
+                <a href="/tags/kubernetes/">Kubernetes</a>, 
+            
+                <a href="/tags/distributed-systems/">Distributed Systems</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=What%20are%20Docker%20%26%20Kubernetes%20%3f%20Why%20do%20they%20exist%20%3f&url=https%3a%2f%2fdesigning.systems%2f2018%2f11%2f18%2fwhat_are_docker_and_kubernetes_why_do_they_exist_docker_part%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdesigning.systems%2f2018%2f11%2f18%2fwhat_are_docker_and_kubernetes_why_do_they_exist_docker_part%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fdesigning.systems%2f2018%2f11%2f18%2fwhat_are_docker_and_kubernetes_why_do_they_exist_docker_part%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=What%20are%20Docker%20%26%20Kubernetes%20%3f%20Why%20do%20they%20exist%20%3f&url=https%3a%2f%2fdesigning.systems%2f2018%2f11%2f18%2fwhat_are_docker_and_kubernetes_why_do_they_exist_docker_part%2f&summary=The%20Docker%20part%20%21"
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="designing.systems" href="https://designing.systems/">designing.systems</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; <a href="https://hemanth.io">Hemanth Malla</a> 2018 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://designing.systems/js/jquery-1.11.3.min.js"></script>
+        <script src="https://designing.systems/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="https://designing.systems/js/scripts.js"></script>
+    </body>
+</html>
+
